@@ -1,5 +1,6 @@
 export const login = (req,res) => {
     res.json({
-        message: "hello world"
+        message: "hello User",
+        token: req.token
     });
 };

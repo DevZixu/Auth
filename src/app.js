@@ -1,7 +1,7 @@
 import e from "express";
-import { validateInpute } from "./utils/inputValidator.js";
 import regRouter from "./routes/register.routes.js";
 import loginRoute from "./routes/login.route.js";
+import protectedRoute from "./routes/protected.js";
 
 const app = e();
 
@@ -9,7 +9,8 @@ const app = e();
 app.use(e.json());
 
 app.use(regRouter); 
-app.use(loginRoute)
+app.use(loginRoute); 
+app.use(protectedRoute); 
 
 
 app.get("/", (req,res) => {
