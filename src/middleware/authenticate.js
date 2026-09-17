@@ -6,6 +6,7 @@ configDotenv()
 export const authenticate =  (req,res, next) =>{
     const token = JWT.sign(req.body, process.env.JWT_SECRET);
     req["token"] = token;
+    console.log(token)
     next();
 };
 

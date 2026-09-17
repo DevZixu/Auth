@@ -1,4 +1,4 @@
-const userDb = []
+export const userDb = []
 
 export const regUser = (req, res) => {
     const {name, email, password, role} = req.body
