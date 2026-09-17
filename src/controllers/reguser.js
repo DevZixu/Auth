@@ -10,9 +10,14 @@ export const regUser = (req, res) => {
         role: role
     };
     const existing = userDb.find(user => user.email === email);
-    if (!existing) userDb.push(user);
-    return res.status(200).json({
-        status :  "created",
-        message: "User has been registered"
+    if (!existing) {
+        userDb.push(user);
+        return res.status(200).json({
+            status :  "created",
+            message: "User has been registered"
+        })
+    };
+    return res.json({
+        message: "user with this email already exists"
     });
 };
