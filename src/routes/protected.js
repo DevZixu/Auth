@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { auth } from "../middleware/authenticate.js";
+
 import { authorize } from "../middleware/authorization.js";
-import { admin } from "../controllers/admin.js";
+import protectedCrt from "../controllers/protected.js";
 
 const protectedRoute = Router();
 
-protectedRoute.post("/protected", auth, authorize, admin);
+protectedRoute.get("/protected", authorize, protectedCrt);
 
 export default protectedRoute;

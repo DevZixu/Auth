@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { validateInpute } from "../utils/inputValidator.js";
+import { validateInpute } from "../utils/validators.js";
 import { regUser } from "../controllers/reguser.js";
 
 const regRouter = Router();

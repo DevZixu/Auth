@@ -1,8 +1,6 @@
 import { inputSchema } from "../schema/inputSchema.js";
 import { loginSchema } from "../schema/loginSchema.js";
-import { userDb } from "../controllers/reguser.js";
 import { hashPass } from "./hashpass.js";
-import bcrypt from "bcrypt";
 
 export const validateInpute = async (req, res, next) => {
   const result = inputSchema.safeParse(req.body);
@@ -17,11 +15,9 @@ export const validateInpute = async (req, res, next) => {
 };
 
 export const validateLogin = async (req, res, next) => {
-  const result = await loginSchema.safeParse(req.body);
-  const {email,password} = result.data
-  const user = userDb.find((user) => user.email === email)
-  if (result.success){
-    const isMatch = await bcrypt.compare(password, user.password)  
-    if (isMatch) next();
-  };
+  const result = loginSchema.safeParse(req.body);
+  if (result.success) {
+    req["data"] = result.data
+    next();
+  }
 };
